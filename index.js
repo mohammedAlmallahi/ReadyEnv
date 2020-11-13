@@ -21,5 +21,4 @@ app.use((req, res, next) => {
 });
 
 app.use(HomePageRoute);
-console.log("Hi");
 app.listen(4000);
