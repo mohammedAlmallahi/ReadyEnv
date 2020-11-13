@@ -13,10 +13,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*"); // allow to all endpoints to access
   res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requsted-With, Accept, Content-Type, Authorization"
+  );
+  res.setHeader(
     "Access-Control-Allow-Methods",
     "OPTIONS, GET, POST, PUT, PATCH, DELETE"
   ); // allow to all endpoints to access  to dp thers methods
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   next();
 });
 
