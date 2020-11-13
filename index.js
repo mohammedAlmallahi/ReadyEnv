@@ -5,6 +5,8 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const multer = require("multer");
 
+const HomePageRoute = require("./routes/HomePageRoute");
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -18,10 +20,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/", (req, res, next) => {
-  return res.json({
-    message: "it's working",
-  });
-});
+app.use(HomePageRoute);
 
 app.listen(4000);
