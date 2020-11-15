@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import * as actions from "./actions";
 import Home from "./components/Home";
 import { Route, Switch } from "react-router-dom";
+import Auth from "./components/auth";
 import "./App.css";
 
 class App extends Component {
@@ -34,8 +35,9 @@ class App extends Component {
           path="/register_login"
           component={Auth(RegiserLogIN, false)}
         /> */}
-
-        <Route exact path="/" component={Auth(Home, null)} />
+        {/* 
+        <Route exact path="/" component={Auth(Home, null)} /> */}
+        <Route exact path="/" component={Home} />
       </Switch>
     );
   }

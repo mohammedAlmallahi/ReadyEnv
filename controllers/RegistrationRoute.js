@@ -3,8 +3,6 @@ const bycrpt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 exports.auth = (req, res, next) => {
-  console.log("Hi --------------");
-  console.log(req.cookies);
   let token = req.cookies.w_auth;
   jwt.verify(token, "SUPERSECRETPASSWORD123", (err, decode) => {
     User.findOne({ _id: decode, token: token })
