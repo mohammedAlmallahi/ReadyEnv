@@ -11,7 +11,7 @@ exports.auth = (req, res, next) => {
         if (!user)
           return res.json({
             isAuth: false,
-            error: "ok",
+            error: "",
           });
 
         req.token = token;

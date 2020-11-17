@@ -12,6 +12,7 @@ const Auth = (ChildComponent, reload, adminRoute = null) => {
 
     componentDidUpdate() {
       const user = this.props.user;
+
       if (!user) return;
       if (!user.isAuth) {
         if (reload) {
@@ -28,7 +29,7 @@ const Auth = (ChildComponent, reload, adminRoute = null) => {
       }
     }
     render() {
-      if (this.props.user === null || this.props.user.isAuth === false) {
+      if (!this.props.user) {
         return (
           <div className="main_loader">
             <CircularProgress style={{ color: "#2196F3" }} thickness={7} />
