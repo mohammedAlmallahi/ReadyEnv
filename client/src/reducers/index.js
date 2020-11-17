@@ -1,10 +1,12 @@
 import { combineReducers } from "redux";
-import fetchingUser from "./authReducers";
 import { reducer as reduxForm } from "redux-form";
+import authReducers from "./authReducers";
+import loginReducer from "./logInReducer";
 import auth from "./auth";
 
 export default combineReducers({
-  auth: fetchingUser,
-  isAuth: auth,
+  signUp: authReducers,
+  user: auth,
   form: reduxForm,
+  login: loginReducer,
 });

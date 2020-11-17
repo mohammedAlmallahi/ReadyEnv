@@ -1,13 +1,10 @@
-const initialState = {
-  isAuth: "",
-  error: "",
-};
-
-export default (state = initialState, action) => {
+const auth = (state = null, action) => {
   switch (action.type) {
     case "auth":
-      return action.payload || false;
+      return action.payload;
     default:
       return state;
   }
 };
+
+export default auth;

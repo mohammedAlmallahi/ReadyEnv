@@ -3,15 +3,17 @@ const bycrpt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 exports.auth = (req, res, next) => {
-  let token = req.cookies.w_auth;
+  console.log("authing..");
+  const token = req.headers.authorization;
   jwt.verify(token, "SUPERSECRETPASSWORD123", (err, decode) => {
     User.findOne({ _id: decode, token: token })
       .then((user) => {
         if (!user)
           return res.json({
             isAuth: false,
-            error: true,
+            error: "ok",
           });
+
         req.token = token;
         req.user = user;
         next();
@@ -27,8 +29,6 @@ exports.authing = (req, res, next) => {
   res.status(200).json({
     isAuth: true,
     email: req.user.email,
-    firstName: req.user.firstName,
-    lastName: req.user.lastName,
   });
 }; // end of authing
 
@@ -78,8 +78,10 @@ exports.logIn = (req, res, next) => {
           user
             .save()
             .then((user) => {
-              res.cookie("w_auth", user.token).status(200).json({
+              //set a token
+              return res.status(200).json({
                 loginSuccess: true,
+                token,
               });
             })
             .catch((err) => {
