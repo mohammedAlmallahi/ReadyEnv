@@ -14,6 +14,7 @@ const Auth = (ChildComponent, reload, adminRoute = null) => {
       const user = this.props.user;
 
       if (!user) return;
+
       if (!user.isAuth) {
         if (reload) {
           this.props.history.push("/log_in");
